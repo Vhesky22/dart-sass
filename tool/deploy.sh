@@ -23,26 +23,32 @@ travis_fold() {
   echo -en "travis_fold:${action}:${name}\r"
 }
 
-travis_fold start github
-travis_cmd pub run grinder github_release
-travis_fold end github
+travis_fold start env
+travis_cmd env
+travis_fold end env
 
-travis_fold start npm
-travis_cmd pub run grinder npm_package
-travis_cmd npm publish build/npm
-travis_cmd npm publish build/npm-old
-travis_fold end npm
+travis_cmd pub run grinder
 
-travis_fold start pub
-travis_cmd pub lish --force
-travis_fold end pub
+# travis_fold start github
+# travis_cmd pub run grinder github_release
+# travis_fold end github
 
-travis_fold start homebrew
-git config --local user.name "Natalie Weizenbaum"
-git config --local user.email "nweiz@google.com"
-travis_cmd pub run grinder update_homebrew
-travis_fold end homebrew
+# travis_fold start npm
+# travis_cmd pub run grinder npm_package
+# travis_cmd npm publish build/npm
+# travis_cmd npm publish build/npm-old
+# travis_fold end npm
 
-travis_fold start chocolatey
-travis_cmd pub run grinder update_chocolatey
-travis_fold end chocolatey
+# travis_fold start pub
+# travis_cmd pub lish --force
+# travis_fold end pub
+
+# travis_fold start homebrew
+# git config --local user.name "Natalie Weizenbaum"
+# git config --local user.email "nweiz@google.com"
+# travis_cmd pub run grinder update_homebrew
+# travis_fold end homebrew
+
+# travis_fold start chocolatey
+# travis_cmd pub run grinder update_chocolatey
+# travis_fold end chocolatey
